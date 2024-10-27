@@ -20,7 +20,7 @@ const TaskForm = () => {
 
   const fetchTask = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/tasks/${id}`);
+      const response = await axios.get(`${import.meta.env.VITE_BASEURL}/api/tasks/${id}`);
       const { title, description, dateTime, priority } = response.data;
       setTask({
         title,
@@ -37,9 +37,9 @@ const TaskForm = () => {
     e.preventDefault();
     try {
       if (id) {
-        await axios.patch(`http://localhost:4000/api/tasks/${id}`, task);
+        await axios.patch(`${import.meta.env.VITE_BASEURL}/api/tasks/${id}`, task);
       } else {
-        await axios.post('http://localhost:4000/api/tasks', task);
+        await axios.post(`${import.meta.env.VITE_BASEURL}/api/tasks`, task);
       }
       navigate('/');
     } catch (error) {

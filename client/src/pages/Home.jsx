@@ -13,7 +13,7 @@ const Home = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/tasks");
+      const response = await axios.get(`${import.meta.env.VITE_BASEURL}/api/tasks`);
       // Group tasks by week
       updateWeeklyTasks(response.data);
     } catch (error) {
@@ -38,7 +38,7 @@ const Home = () => {
 
   const handleStatusUpdate = async (taskId, newStatus) => {
     try {
-      await axios.patch(`http://localhost:4000/api/tasks/${taskId}`, {
+      await axios.patch(`${import.meta.env.VITE_BASEURL}/api/tasks/${taskId}`, {
         status: newStatus,
       });
       fetchTasks();
@@ -49,7 +49,7 @@ const Home = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:4000/api/tasks/${taskId}`);
+      await axios.delete(`${import.meta.env.VITE_BASEURL}/api/tasks/${taskId}`);
       fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);

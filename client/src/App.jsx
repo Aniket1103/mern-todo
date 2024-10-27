@@ -22,7 +22,7 @@ const App = () => {
     setIsSearching(true);
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/tasks/search?query=${searchQuery}`
+        `${import.meta.env.VITE_BASEURL}/api/tasks/search?query=${searchQuery}`
       );
       console.log(response.data);
       setSearchResults(response.data);

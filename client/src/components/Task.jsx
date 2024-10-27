@@ -6,7 +6,7 @@ const Task = ({task, searchResults, setSearchResults}) => {
 
     const handleEdit = async (e) => {
         try {
-            await axios.patch(`http://localhost:4000/api/tasks/${id}`, task);
+            await axios.patch(`${import.meta.env.VITE_BASEURL}/api/tasks/${id}`, task);
           navigate('/');
         } catch (error) {
           console.error('Error saving task:', error);
@@ -15,7 +15,7 @@ const Task = ({task, searchResults, setSearchResults}) => {
 
       const handleStatusUpdate = async (taskId, newStatus) => {
         try {
-          const response = await axios.patch(`http://localhost:4000/api/tasks/${taskId}`, {
+          const response = await axios.patch(`${import.meta.env.VITE_BASEURL}/api/tasks/${taskId}`, {
             status: newStatus
           });
           setSearchResults(searchResults.map(task => 
@@ -28,7 +28,7 @@ const Task = ({task, searchResults, setSearchResults}) => {
 
       const handleDeleteTask = async (taskId) => {
         try {
-          await axios.delete(`http://localhost:4000/api/tasks/${taskId}`);
+          await axios.delete(`${import.meta.env.VITE_BASEURL}/api/tasks/${taskId}`);
           setSearchResults(searchResults.filter(task => task._id !== taskId));
         } catch (error) {
           console.error('Error deleting task:', error);
