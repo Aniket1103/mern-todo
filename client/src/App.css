@@ -1,0 +1,12 @@
+.custom-progress::-webkit-progress-bar {
+  background-color: #e2e8f0; /* Light gray background */
+}
+
+/* Style the filled portion of the progress bar */
+.custom-progress::-webkit-progress-value {
+  background-color: #4f46e5; /* Indigo color for the progress */
+}
+
+.custom-progress::-moz-progress-bar {
+  background-color: #4f46e5;
+}
